@@ -1,18 +1,17 @@
 #include <Arduino.h>
+#include <Stepper.h>
+#include <definitions.h>
 
-// put function declarations here:
-int myFunction(int, int);
+
+Stepper stepper = Stepper(STEPS_PER_REVOLUTION, IN1, IN2, IN3, IN4);
 
 void setup() {
-  // put your setup code here, to run once:
-  int result = myFunction(2, 3);
+  Serial.begin(9600);
+  delay(5000);
+  Serial.println("Board ready");
 }
 
 void loop() {
-  // put your main code here, to run repeatedly:
-}
-
-// put function definitions here:
-int myFunction(int x, int y) {
-  return x + y;
+  stepper.setSpeed(500);
+  stepper.step(50);
 }
